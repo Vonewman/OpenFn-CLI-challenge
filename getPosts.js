@@ -1,7 +1,7 @@
 // Get all posts
 get('posts');
 
-// Group posts by user id
+// Group posts by user
 fn(state => {
   const posts = state.data;
 
@@ -18,6 +18,13 @@ fn(state => {
 // Log posts where userId = 1
 fn(state => {
   const { groupPostsByUserId } = state;
-  console.log('Post with userId 1', groupPostsByUserId[1]);
+  const posts = groupPostsByUserId[1];
+
+  // console.log("Post with userId 1", groupPostsByUserId[1]);
+  return { ...state, posts };
+});
+
+each('posts[*]', state => {
+  console.log('Post', JSON.stringify(state.data, null, 2));
   return state;
 });

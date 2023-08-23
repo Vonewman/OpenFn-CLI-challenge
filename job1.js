@@ -12,7 +12,7 @@ fn(state => {
   const filteredPosts = posts.filter(post => post.userId === userIdToFilter);
 
   // Return the filtered posts
-  return { state, filteredPosts };
+  return { ...state, filteredPosts };
 });
 
 // Log the filtered posts
